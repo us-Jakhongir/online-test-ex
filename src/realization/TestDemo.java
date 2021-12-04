@@ -59,9 +59,9 @@ public class TestDemo {
 
     }
 
-    private static void signIn() {
+    private static void signUp() {
         registrationService = new RegistrationServicveImpl();
-        boolean isSuccess = registrationService.signIn();
+        boolean isSuccess = registrationService.signUp();
 
         try {
             if (isSuccess)
@@ -75,9 +75,9 @@ public class TestDemo {
 
 
 
-    private static void signUp() {
+    private static void signIn() {
         registrationService = new RegistrationServicveImpl();
-        boolean isSuccess = registrationService.signUp();
+        boolean isSuccess = registrationService.signIn();
 
         if (isSuccess) {
             demonstrationService = new DemonstrationServiceImpl();
