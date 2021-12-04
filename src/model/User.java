@@ -9,13 +9,15 @@ public class User {
     private String email;
     private String password;
     private Role role;
+    private Double balance;
 
-    public User(Long id, String fullName, String email, String password, Role role) {
+    public User(Long id, String fullName, String email, String password, Role role, Double balance) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.balance = balance;
     }
 
     public Long getId() {
@@ -46,6 +48,7 @@ public class User {
         return password;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -58,6 +61,14 @@ public class User {
         this.role = role;
     }
 
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -66,6 +77,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", balance=" + balance +
                 '}';
     }
 }

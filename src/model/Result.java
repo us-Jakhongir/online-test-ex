@@ -5,10 +5,20 @@ public class Result {
 
     private User user;
     private Subject subject;
+    private int score;
 
-    public Result(User user, Subject subject) {
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Result(User user, Subject subject, int score) {
         this.user = user;
         this.subject = subject;
+        this.score = score;
     }
 
     public User getUser() {
@@ -32,6 +42,7 @@ public class Result {
         return "Result{" +
                 "user=" + user +
                 ", subject=" + subject +
+                ", score=" + score +
                 '}';
     }
 }

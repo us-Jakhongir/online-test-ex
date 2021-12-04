@@ -7,13 +7,12 @@ public class Subject {
     private Long id;
     private String name;
     private List<Question> questionList;
-    private int score;
 
-    public Subject(Long id, String name, List<Question> questionList, int score) {
+
+    public Subject(Long id, String name, List<Question> questionList) {
         this.id = id;
         this.name = name;
         this.questionList = questionList;
-        this.score = score;
     }
 
     public Long getId() {
@@ -40,13 +39,6 @@ public class Subject {
         this.questionList = questionList;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
 
     @Override
     public String toString() {
@@ -54,7 +46,6 @@ public class Subject {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", questionList=" + questionList +
-                ", score=" + score +
                 '}';
     }
 }
