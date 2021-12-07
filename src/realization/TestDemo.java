@@ -36,24 +36,26 @@ public class TestDemo {
             showMainMenu();
 
             scanner = new Scanner(System.in);
-            int choice = scanner.nextInt();
+            try {
+                int choice = scanner.nextInt();
 
-            switch (choice) {
+                switch (choice) {
 
-                case 1:
-                    signIn();
-                    break;
+                    case 1:
+                        signIn();
+                        break;
 
-                case 2:
-                    signUp();
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("Incorrect option!");
+                    case 2:
+                        signUp();
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("Incorrect option!");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
-
-
         }
 
 
@@ -61,9 +63,8 @@ public class TestDemo {
 
     private static void signUp() {
         registrationService = new RegistrationServicveImpl();
-        boolean isSuccess = registrationService.signUp();
-
         try {
+        boolean isSuccess = registrationService.signUp();
             if (isSuccess)
                 System.out.println("Success!");
 
@@ -77,29 +78,38 @@ public class TestDemo {
 
     private static void signIn() {
         registrationService = new RegistrationServicveImpl();
-        boolean isSuccess = registrationService.signIn();
+        try {
+            boolean isSuccess = registrationService.signIn();
+            if (isSuccess) {
+                TestDemo.currentUser.setSignedIn(true);
+                demonstrationService = new DemonstrationServiceImpl();
+                while (TestDemo.currentUser.isSignedIn()) {
+                    switch (currentUser.getRole()) {
+                        case ADMIN:
+                            demonstrationService.showAdminMenu();
+                            break;
 
-        if (isSuccess) {
-            demonstrationService = new DemonstrationServiceImpl();
+                        case STUDENT:
+                            demonstrationService.showStudentMenu();
 
-            switch (currentUser.getRole()) {
-                case ADMIN:
-                    demonstrationService.showAdminMenu();
-                    break;
-
-                case STUDENT:
-                    demonstrationService.showStudentMenu();
-
+                    }
+                }
             }
-
+        }catch (UserNotFoundException e){
+            System.out.println(e.getMessage());
         }
 
     }
 
     private static void showMainMenu() {
+        System.out.println();
+
         System.out.println("1. Sign In");
         System.out.println("2. Sign Up");
         System.out.println("0. Exit");
+        System.out.println();
+
+        System.out.print("Menu: ");
     }
 
 }

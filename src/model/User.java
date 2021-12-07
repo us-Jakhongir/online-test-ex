@@ -10,6 +10,7 @@ public class User {
     private String password;
     private Role role;
     private Double balance;
+    private Boolean signedIn;
 
     public User(Long id, String fullName, String email, String password, Role role, Double balance) {
         this.id = id;
@@ -18,6 +19,7 @@ public class User {
         this.password = password;
         this.role = role;
         this.balance = balance;
+        this.signedIn = false;
     }
 
     public Long getId() {
@@ -69,6 +71,14 @@ public class User {
         this.balance = balance;
     }
 
+    public Boolean isSignedIn() {
+        return signedIn;
+    }
+
+    public void setSignedIn(Boolean signedIn) {
+        this.signedIn = signedIn;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -78,6 +88,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", balance=" + balance +
+                ", signedIn=" + signedIn +
                 '}';
     }
 }
